@@ -1,0 +1,14 @@
+@tailwind base;
+
+@layer base {
+  html,
+  body,
+  #__next {
+    @apply min-h-screen overflow-x-clip bg-bg;
+  }
+
+  img,
+  svg {
+    @apply shrink-0;
+  }
+}

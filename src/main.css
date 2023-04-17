@@ -1,0 +1,7 @@
+@import "styles/tailwind/base";
+@import "styles/tailwind/components";
+
+/* Common components */
+@import-glob "styles/*.css";
+
+@import "styles/tailwind/utilities";
