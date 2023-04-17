@@ -128,17 +128,23 @@ const Brewed = ({ coffee }) => {
 };
 
 export const getStaticProps = async () => {
+  let coffee = null;
+
   await connectDB();
 
-  const res = await Coffee.find({});
+  try {
+    const res = await Coffee.find({});
 
-  const coffee = res.map((doc) => {
-    const aCoffee = doc.toObject();
+    coffee = res.map((doc) => {
+      const aCoffee = doc.toObject();
 
-    aCoffee._id = aCoffee._id.toString();
+      aCoffee._id = aCoffee._id.toString();
 
-    return aCoffee;
-  });
+      return aCoffee;
+    });
+  } catch (err) {
+    throw new Error("🛑 Something went wrong!", { cause: err });
+  }
 
   return { props: { coffee }, revalidate: 10 };
 };
